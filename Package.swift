@@ -20,7 +20,13 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "StompClientLibSwift",
-            dependencies: []),
+            dependencies: ["StompClientLibOBJC"],
+            path: "Sources/StompClientLibSwift"),
+        .target(
+            name: "StompClientLibOBJC",
+            dependencies: [],
+            path: "Sources/StompClientLibOBJC",
+            exclude: ["StompClientLibSwift"]),
         .testTarget(
             name: "StompClientLibSwiftTests",
             dependencies: ["StompClientLibSwift"]),
