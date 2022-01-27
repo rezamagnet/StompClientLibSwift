@@ -372,7 +372,6 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
      Main Subscribe Method with topic name
      */
     public func subscribe(destination: String) {
-        connection = true
         subscribeToDestination(destination: destination, ackMode: .AutoMode)
     }
     
@@ -406,7 +405,6 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
      Main Unsubscribe Method with topic name
      */
     public func unsubscribe(destination: String) {
-        connection = false
         var headerToSend = [String: String]()
         headerToSend[StompCommands.commandHeaderDestinationId] = destination
         sendFrame(command: StompCommands.commandUnsubscribe, header: headerToSend, body: nil)
